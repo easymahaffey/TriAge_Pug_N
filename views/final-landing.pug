@@ -1,0 +1,36 @@
+extends layout.pug 
+
+block append content 
+
+  div.container-fluid
+
+    div.jumbotron
+
+      if vendor_status
+        h3 Welcome #{ organization_name }.
+      if loggedIn 
+        h2.display-4 Hello #{first_name} #{ name }
+        
+      h1.display-4 Welcome to the TriAge Project
+
+      p.lead Programs providing advocacy for the homeless.
+      hr.my-4
+      p When you’re homeless it’s difficult to stay healthy.
+      p When you’re sick it’s hard to get back on your feet financially.
+      p When you’re experiencing mental illness or a substance use disorder, it’s a challenge to survive.
+
+      p If this is your first visit you may want to update your
+        span 
+          if membership_role
+            a.link(href="/memberProfileSettings/" + id) profile.
+          else if userLevel
+            a.link(href="/myProfileSettings/" + id) profile.
+      
+      if member_student_status !== "Active"
+        p You can also enroll in the  
+          a.link(href="/registerStudent/" + id) TriAge Challenge.
+
+      div
+        a.btn.btn-primary.btn-lg(href="/triage-help-you/" + id) Help you
+
+        a.btn.btn-primary.btn-lg(href="/triage-help-others/" + id) Help others

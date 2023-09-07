@@ -1,0 +1,75 @@
+extends layout.pug
+
+block append content 
+
+	h2 New members please enter your profile to enter the site.
+
+	button.btn.btn-primary.btn-lg#register-btn(type="button" data-toggle="modal" data-target="#registerModal") Registration
+
+	p #{ passwordMessage }
+
+	div.modal.fade#registerModal
+		.modal-dialog
+			.modal-content  
+				.modal-header 
+					h1.modal-title Registration Form
+
+				.modal-body
+					form(action="/registerMember" method="post")
+						label(for="current_project") Project
+						br
+						select(id="current_project" name="current_project" required)
+							option(value="") --
+							option(value="Phoenix") Phoenix
+							option(value="Tucson") Tucson
+						br
+						input(type="text" name="first_name" placeholder="First Name *" required)
+						br
+						input(type="text" name="last_name" placeholder="Last Name *" required)
+						br
+						input(type="text" name="email" placeholder="E-mail *" required)
+						br
+						input(type="password" name="password1" placeholder="password *" required)
+						br
+						input(type="password" name="password2" placeholder="confirm password *" required)
+						br
+						input(type="text" name="address1" placeholder="Address 1")
+						br
+						input(type="text" name="address2" placeholder="Address 2")
+						br
+						input(type="text" name="city" placeholder="City *" required)
+						br
+						input(type="text" name="state" placeholder="State *" required)
+						br
+						input(type="text" name="zipCode" placeholder="Zip Code *" required)
+						br
+						input(type="checkbox" name="privacy" placeholder="privacy setting" value="Show")
+						label(for="privacy") Show Profile
+						br
+						input(type="checkbox" name="privacy" placeholder="privacy setting" value ="Hide")
+						label(for="privacy") Hide Profile
+						br
+						input(type="checkbox" name="membership_status" placeholder="membership_status setting" value="Active")
+						label(for="membership_status") Active Membership
+						br
+						input(type="checkbox" name="membership_status" placeholder="membership_status setting" value ="Inactive")
+						label(for="membership_status") Inactive Membership
+						br
+						label(for="membership_role") Membership Role *
+						br
+						select(id="membership_role" name="membership_role" required)
+							option(value="Member") Member
+							option(value="Volunteer") Volunteer
+							option(value="Peer") Peer
+							option(value="Project Leader") Project Leader
+							if membership_role === 'Local Administrator'
+								option(value="Site Manager") Site Manager
+								option(value="Local Administrator") Local Administrator
+						br
+						p * Required
+						br
+						button.btn.btn-primary.btn-lg#register-btn(type="submit") Submit
+
+
+				.modal-footer
+					button.btn.btn-lg.close(type="button" data-dismiss="modal") &times

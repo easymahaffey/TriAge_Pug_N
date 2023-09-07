@@ -1,0 +1,88 @@
+extends layout.pug
+
+block append content
+
+	div.container-fluid
+
+		div.jumbotron
+			h5 Administrator: #{ first_name } #{ last_name } #{ name }
+			h5 Administrator ID: #{ id }
+			h1 Members
+			
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							if userLevel
+								//- th (Admin Use THIS delete only!)
+								//- 	br
+								//- 	br
+								//- 	p Delete
+								th Delete
+								th Edit
+								th ID	
+							else if membership_role === 'Local Administrator'
+								//- th Delete
+								th Edit
+								th ID
+							th First Name
+							th Last Name
+							th Joined
+							if membership_role === 'Local Administrator' || userLevel
+								th Password
+							th Logged-In
+							//- th Time as Member
+							th E-mail
+							th Phone
+							th Project
+							th Address 1
+							th Address 2
+							th City
+							th State
+							th Zip Code
+							th Privacy
+							//- th Birthday
+							th Membership Status
+							th Membership Role
+
+					each member in members
+						tr.small
+							if userLevel 
+								td 
+									form(action="/userUpdateMemberDatabase/" + member.id method="post") 
+										input(type="text" name="adminID" value=id hidden)
+										button(type="submit") &times;
+								td 
+									button.btn.btn-sm
+										a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+								td #{member.id}
+							if membership_role === 'Local Administrator'
+								//- td 
+								//- 	form(action="/updateMemberDatabase/" + member.id method="post") 
+								//- 		input(type="text" name="adminID" value=id hidden)
+								//- 		button(type="submit") &times;
+								td 
+									button.btn.btn-sm
+										a.link(href="/updateMemberProfileDB/" + member.id) &#9998;
+								td #{member.id}
+							td #{member.first_name}
+							td #{member.last_name}
+							td #{member.date_member_joined.toDateString()}
+							if membership_role === 'Local Administrator' || userLevel
+								td #{member.password}
+							td #{member.loggedIn}
+							//- td #{member.time_as_member}
+							td #{member.email}
+							td #{member.phone}
+							td #{member.current_project}
+							td #{member.address1}
+							td #{member.address2}
+							td #{member.city}
+							td #{member.state}
+							td #{member.zipCode}
+							td #{member.privacy}
+							//- td #{member.date_of_birth.toDateString()}
+							td #{member.membership_status}
+							td #{member.membership_role}
+					else
+							td There are no users.

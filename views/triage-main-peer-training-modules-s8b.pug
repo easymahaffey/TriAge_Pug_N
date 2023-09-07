@@ -1,0 +1,31 @@
+block append content
+	link(rel="stylesheet" href="/assets/css/module_content.css")
+	section.container-2
+		div.jumbotron
+			h1 Student Answers
+			h2 #{ first_name } #{ last_name }'s Challenge review.
+			br
+			//- p #{ message }
+			div.table
+				table.table-active.table-dark.table-striped.table-bordered.table-hover.table-responsive.table-condensed.small
+					thead.thead-dark
+						tr.small
+							th Question Text
+							th Question Number
+							tr
+					//- -console.log("STUDENT ANSWERS ", answers)
+					each answer in answers
+						tr.small
+							form(action="/secureMainPeerTrainingModulesS8b/" + member_student_id method="post")
+								td #{answer.questionNumber}									 #{answer.answerDate.toDateString()}
+								tr
+								input.small(type="text" name="id" placeholder="New Answer" value=answer.id hidden)
+								td #{answer.questionText}
+								tr
+								td #{answer.answerText}
+									input.small(type="text" name="answerText" placeholder="New Answer")
+									hr
+								td
+									button.btn.btn-primary.btn-lg#login-btn(type="submit") Submit
+					else
+							td There are no answers.

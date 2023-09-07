@@ -1,0 +1,331 @@
+extends layout.pug 
+
+block append content 
+  
+  div.container-fluid
+
+    div.jumbotron
+
+      h1.display-4
+        em TriAge Project Profile
+      if (loggedIn) 
+        h2 Hello 
+          em #{ first_name } #{ name } 
+          span welcome back.
+      else 
+        h2 
+          a.link(href="/registerMember") Register
+          span  to see more details.
+
+    hr
+    h3#toc
+      a.link(href="#what") What is it?
+      hr
+      a.link(href="#provides") Accompanied Access
+      hr
+      a.link(href="#benefits") Benefits
+      hr
+      a.link(href="#model") Housing First Model
+      hr
+      a.link(href="#goals") Goals
+      hr
+      a.link(href="#corps") Volunteer Corps
+      hr
+      a.link(href="#transport") Transportation Services
+      hr
+      a.link(href="#advocacy") Advocacy Service
+      hr
+      a.link(href="#training") Training Opportunities
+      hr
+      a.link(href="#about") More About Us
+      hr
+      a.link(href="#contact") Contact Us
+      
+      if (loggedIn)
+        hr
+        hr
+        h3#toc2 TriAge Philosophy 
+        hr
+        h4
+          a.link(href="#outline") Behavioral Health Consultation Model
+        hr
+        h4
+          a.link(href="#advocate") Healthcare Advocacy
+        hr
+        h4
+          a.link(href="#metrics") Develop Metrics
+        hr
+        h4
+          a.link(href="#consulting") Services Consulting
+        hr
+        h4
+          a.link(href="#delineate") Delineating Client Problems
+        hr
+        h4
+          a.link(href="#websites") TriAge Websites
+      hr
+      hr
+    h3#what What is it?
+    p
+      strong 
+        ul 
+          li A Volunteer Corps
+          li Liaison to community services
+          li Transportation assistance
+          li Transportation Services
+          li Public transit assistance
+          li Drivers for existing fleets
+          li Fleet service
+          li Coordination of housing and community services
+      a.link(href="#toc") Return To Top
+    hr
+    hr
+    h3#provides Provides accompanied access to:
+    p
+      strong
+        ul
+          li Free transportation
+          li Community Services
+            ul 
+              li Housing
+              li Food
+              li Clothing
+          li Healthcare Services
+            ul
+              li Physical Healthcare
+              li Behavioral Healthcare
+      a.link(href="#toc") Return To Top
+    hr
+    h3#benefits Benefits
+    p
+      strong
+        ul
+          li Better community service outcomes
+            ul
+              li Lower costs
+          li Better healthcare outcomes
+            ul
+              li Lower costs
+          li Better communities
+          li Better lives
+      a.link(href="#toc") Return To Top
+    hr
+    h3#model Supports the Housing First Model
+    p 
+      strong 
+        p Housing First approaches are used to engage people into services who are homeless and have behavioral health conditions. They are low demand, offer permanent housing for people who are homeless, and do not require the client to enter treatment or document abstinence.
+
+        p (Corporation for Supportive Housing Web site http://www.csh.org)
+      a.link(href="#toc") Return To Top
+    hr
+    h3#goals Goals
+    p 
+      strong 
+        ul
+          li End homelessness
+          li Promote client choice
+          li Client recovery
+          li Community integration
+      a.link(href="#toc") Return To Top
+    hr
+    h3#corps Volunteer Corps
+    p 
+      strong 
+        ul
+          li Divers
+          ul 
+            li Existing community fleets
+            li TriAge fleet services
+        
+          li Public transportation assistance
+          ul 
+            li To / from community services
+      a.link(href="#toc") Return To Top
+    hr
+    h3#transport Transportation Services
+    p 
+      strong 
+        ul 
+          li 4 Hour shifts
+          ul 
+            li 8 am to 12pm or 12 pm to 4pm
+            li Daily, weekly, or monthly
+          li Clean DMV record
+          li Peer Support Specialist (PSS) Certification
+          if (loggedIn)
+            ul 
+              li 
+                a.link(href="/arizonaServices/peer-training-centers/" + id) Provided if necessary
+          else 
+            ul
+              li Provided if necessary
+          li CPR/First Aid certification
+          ul 
+            li Provided if necessary
+      a.link(href="#toc") Return To Top
+    hr
+    h3#advocacy Advocacy - Service Coordination (up to ten clients per volunteer)
+    p 
+      strong 
+        ul
+          li Data Collection
+          ul 
+            li Document new clients
+            li Log transportation
+            li Log community service accessed
+            li Log client satisfaction
+          li Monitor Services
+            ul 
+              li When/Why/What service accessed
+          li Client Management
+            ul 
+              li Coordination of housing and community services
+      a.link(href="#toc") Return To Top
+    hr
+    h3#training Training Opportunities
+    p 
+      strong 
+        ul 
+          if (loggedIn)
+            li 
+              a.link(href="/arizonaServices/peer-training-centers/" + id) Peer Support Specialist (state certification)
+          else 
+            li Peer Support Specialist (state certification)
+          li CPR/First Aid (Red Cross certification)
+          li Scholarships
+          li Internships
+          li Volunteer trainer
+          li Project Management (employment)
+      a.link(href="#toc") Return To Top
+    hr
+    h3.display-4#about More about us
+    br
+    h3 Our story 
+    p 
+      strong 
+        ul 
+          li We are homeless 
+          li We are parents 
+          li We are veterans
+          br
+    h3 Our strengths 
+    p 
+      strong 
+        ul 
+          li We raised out children 
+          li Managed our businesses
+          li Served our country
+          br
+    h3 Our need 
+    p 
+      strong 
+        ul 
+          li Drivers
+          li Vans
+          li Donations
+          br
+    h3 How can you help? 
+    p 
+      strong 
+        ul 
+          li Volunteer
+          li Donate
+          li Tell a friend
+          br
+      a.link(href="#toc") Return To Top
+    hr
+    h3#contact Contact us:
+    br 
+    strong 
+      p H. "Easy" Mahaffey (319173)
+      p ASPC Tucson
+      p Whetstone Unit 2B42
+      p 10004 S. Wilmot Rd.
+      p Tucson, AZ 85734-4402
+    a.link(href="#toc") Return To Top
+    br
+    hr
+    if (loggedIn)
+      h3#outline Behavioral Health Consultation Model (Parsons, Meyers & Jossey-Bass, 1984)
+      br
+      p The TriAge Project uses the behavioral health consultation model developed by Parsons, et al, to identify and provision services most effectively.
+      p 
+      p 
+        strong 
+          ul 
+            li Direct service to client (I)
+            li Indirect service to client (II) *	
+            li Service to the consultee (III) *
+            li Service to the system (IV) *
+        p * TriAge Project focus areas.
+        p Principle: “… services should be given in most parsimoniously manner that is maximally effective.”
+        img(src="/assets/images/pics/model_stages.png" style="height:100%;width:100%" alt="Model Stages")
+        br
+        br
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#advocate Provide healthcare advocacy:
+      p 
+        strong 
+          ul 
+            li Healthcare Advocacy
+            ul 
+              li Client
+              li Services
+              li Social reformation
+              li Legal reformation
+            li Data collection (metrics)
+            li Consulting
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#metrics Develop Metrics:
+      p 
+        strong 
+          ul 
+            li Healthcare Advocacy
+            li Data collection (metrics)
+            ul 
+              li Client progress
+              li Service performance
+              li Service needs
+              li Missing services
+            li Consulting
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#consulting Services Consulting:
+      p 
+        strong 
+          ul 
+            li Healthcare Advocacy
+            li Data collection (metrics)
+            li Consulting
+            ul 
+              li Service modifications
+              li Interm provisioning (direct service)
+              li Provisioning services
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#delineate Delineate Internal versus External Problems
+      p 
+        strong 
+          ul 
+            li Internal problems make it difficult to recognize the need for help or how to ask for it.
+            li External problems are a lack of knowledge about available services or how to access them.
+        strong
+          p TriAge Projects:
+        p Help the client identify need (Assessment)
+        p Help the client identify help	(Referral)
+        p Accompany the client (Advocate)
+          ul 
+            li Log results
+            li Schedule follow-up	
+        a.link(href="#toc2") Return To Top
+        hr
+      h3#websites TriAge Websites
+        br
+        br
+        img(src="/assets/images/pics/websites.png" style="height:100%;width:100%" alt="Model Stages")
+      br
+      p
+        a.link(href="#toc2") Return To Top
+        hr
